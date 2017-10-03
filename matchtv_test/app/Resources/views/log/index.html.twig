@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Logs list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Url</th>
+                <th>Reqhead</th>
+                <th>Reqbody</th>
+                <th>Reshead</th>
+                <th>Resbody</th>
+                <th>Status</th>
+                <th>Ip</th>
+                <th>Date</th>
+                <th>Datetime</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for log in logs %}
+            <tr>
+                <td><a href="{{ path('admin_http-log_show', { 'hash': log.hash }) }}">{{ log.url }}</a></td>
+                <td>{{ log.reqhead }}</td>
+                <td>{{ log.reqbody }}</td>
+                <td>{{ log.reshead }}</td>
+                <td>{{ log.resbody }}</td>
+                <td>{{ log.status }}</td>
+                <td>{{ log.ip }}</td>
+                <td>{{ log.date }}</td>
+                <td>{% if log.datetime %}{{ log.datetime|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_http-log_show', { 'hash': log.hash }) }}">show</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    
+{% endblock %}

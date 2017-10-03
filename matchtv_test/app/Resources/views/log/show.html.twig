@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Log</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Url</th>
+                <td>{{ log.url }}</td>
+            </tr>
+            <tr>
+                <th>Reqhead</th>
+                <td>{{ log.reqhead }}</td>
+            </tr>
+            <tr>
+                <th>Reqbody</th>
+                <td>{{ log.reqbody }}</td>
+            </tr>
+            <tr>
+                <th>Reshead</th>
+                <td>{{ log.reshead }}</td>
+            </tr>
+            <tr>
+                <th>Resbody</th>
+                <td>{{ log.resbody }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ log.status }}</td>
+            </tr>
+            <tr>
+                <th>Ip</th>
+                <td>{{ log.ip }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ log.date }}</td>
+            </tr>
+            <tr>
+                <th>Datetime</th>
+                <td>{% if log.datetime %}{{ log.datetime|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_http-log_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}
